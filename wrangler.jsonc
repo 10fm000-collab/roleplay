@@ -1,0 +1,49 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "roleplay",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-08",
+
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "3ae2d5a1625a42d8b154764875165927",
+      "preview_id": "3ae2d5a1625a42d8b154764875165927"
+    }
+  ],
+
+  "observability": { "enabled": true },
+  "upload_source_maps": true,
+  "compatibility_flags": ["nodejs_compat"],
+
+  "d1_databases": [
+    {
+      "binding": "roleplay_db",
+      "database_name": "roleplay_db",
+      "database_id": "192762b8-2e24-41bc-bad0-c77ada53422c",
+      "remote": true
+    }
+  ],
+
+  "vars": {
+    "LLM_BASE_URL": "https://young-truth-a9b8.singhvikas21571.workers.dev",
+    "FIREBASE_PROJECT_ID": "tts-bot-db",
+    "ADMIN_UIDS": "hrMsLJdOR0XL4377c7iwkehPciD3",
+
+    "QDRANT_URL": "https://134f7f38-70a8-4a0f-9bd4-ba3fc60689ce.us-east-2-0.aws.cloud.qdrant.io",
+    "QDRANT_COLLECTION": "roleplay_memories",
+    "VOYAGE_EMBED_MODEL": "voyage-4-lite",
+    "VOYAGE_OUTPUT_DIM": "512"
+  },
+
+  "services": [
+    {
+      "binding": "LLM",
+      "service": "young-truth-a9b8"
+    }
+  ]
+}
